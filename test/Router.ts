@@ -14,24 +14,26 @@ describe("Router", function () {
     const amount = 1000000;
 
     await tokenMock.mint(addrA.address, amount);
-    // await tokenMock.approve(addrA.address, '1');
+    await tokenMock.approve(router.address, 10);
 
-    await tokenMock.approve(router.address, amount, {from: addrA.address});
-
-    console.log('addrA.address', addrA.address);
-    console.log('addrB.address', addrB.address);
-    console.log('router.address', router.address);
-    console.log('tokenMock.address', tokenMock.address);
-    console.log(await tokenMock.balanceOf(addrA.address));
+    // console.log('addrA.address', addrA.address);
+    // console.log('addrB.address', addrB.address);
+    // console.log('router.address', router.address);
+    // console.log('tokenMock.address', tokenMock.address);
 
     await router.connect(addrA).transfer(
       tokenMock.address,
       addrB.address,
-      ethers.BigNumber.from(1),
+      ethers.BigNumber.from(10),
     );
 
-    expect(await tokenMock.balanceOf(router.address)).to.equal(1);
-    expect(await tokenMock.balanceOf(addrA.address)).to.equal(amount - 1);
+    // console.log(await tokenMock.balanceOf(addrA.address));
+    // console.log(await tokenMock.balanceOf(addrB.address));
+    // console.log(await tokenMock.balanceOf(router.address));
+
+    // expect(await tokenMock.balanceOf(router.address)).to.equal(1);
+    expect(await tokenMock.balanceOf(addrA.address)).to.equal(amount - 10);
+    expect(await tokenMock.balanceOf(addrB.address)).to.equal(10);
     // expect(await tokenMock.balanceOf(addrA.address)).to.equal(1000000 - 1);
   });
 
