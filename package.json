@@ -1,6 +1,7 @@
 {
-  "name": "hardhat-project",
+  "name": "payment-erc20",
   "devDependencies": {
+    "@rari-capital/solmate": "^6.4.0",
     "@ethersproject/abi": "^5.6.4",
     "@ethersproject/providers": "^5.6.8",
     "@nomicfoundation/hardhat-chai-matchers": "^1.0.2",
